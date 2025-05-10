@@ -4,10 +4,14 @@ const app = express();
 app.get('/', (req, res) => {
   const now = new Date();
 
-  const dia = String(now.getDate()).padStart(2, '0');
-  const mes = String(now.getMonth() + 1).padStart(2, '0'); // Janeiro = 0
-  const ano = now.getFullYear();
+  const formatter = new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
 
+  const [{ value: dia }, , { value: mes }, , { value: ano }] = formatter.formatToParts(now);
   const dataFormatada = `${dia}-${mes}-${ano}`;
 
   res.json({ data: dataFormatada });
