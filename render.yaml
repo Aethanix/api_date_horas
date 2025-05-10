@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: api_date_horas
+    name: api_data
     env: node
     plan: free
     buildCommand: "npm install"
