@@ -3,11 +3,14 @@ const app = express();
 
 app.get('/', (req, res) => {
   const now = new Date();
-  res.json({
-    data: now.toISOString().split('T')[0],
-    hora: now.toTimeString().split(' ')[0],
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-  });
+
+  const dia = String(now.getDate()).padStart(2, '0');
+  const mes = String(now.getMonth() + 1).padStart(2, '0'); // Janeiro é 0
+  const ano = now.getFullYear();
+
+  const dataFormatada = `${dia}-${mes}-${ano}`;
+
+  res.send(dataFormatada);
 });
 
 const PORT = process.env.PORT || 3000;
