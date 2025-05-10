@@ -1,5 +1,5 @@
 {
-  "name": "date-api-node",
+  "name": "api_data",
   "version": "1.0.0",
   "description": "API simples de data e hora",
   "main": "index.js",
